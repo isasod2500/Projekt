@@ -1,0 +1,61 @@
+@use "../mixins/mixins" as *;
+:root {
+    color-scheme: light dark;
+}
+body {
+    font-family: Saira, sans-serif;
+}
+
+@media (max-width: 768px) {
+    @media (prefers-color-scheme: light) {
+        body {
+            @include light-theme;
+        }
+        #mainIndex {
+            background-color: #FFEDA3
+        }
+        #indexNav {
+            @include nav-light;
+        }
+
+        a {
+            @include text-light;
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        body {
+            @include dark-theme;
+        }
+        #mainIndex {
+            background-color: #473900;
+        }
+        #indexNav {
+            @include nav-dark;
+        }
+
+        a {
+            @include text-dark;
+        }
+    }
+    #mainIndex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+} h1, h2 {
+    text-align: center;
+    max-width: 40ch;
+}
+
+#beerBtn {
+     animation: shakeBtn 1.5s infinite ease-in-out;
+    font-size: 20px;
+    border-radius: 4px;
+    background-color: #473900;
+    color: #fdf1c2;
+   
+} #beerBtn:hover {
+    text-decoration: underline;
+}
+}
+

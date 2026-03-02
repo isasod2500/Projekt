@@ -1,0 +1,27 @@
+@mixin light-theme {
+    background-color: #FFF5CC;
+    color: #473900;
+}
+
+@mixin dark-theme {
+    background-color: #382B00;
+    color: #fdf1c2
+}
+
+@mixin nav-light {
+    background-color: #473900;
+    color: #FAC800
+}
+
+@mixin nav-dark {
+    background-color: #5C4900;
+    color: #FFE680;
+}
+
+@mixin text-light {
+    color: #FDF1C2
+}
+
+@mixin text-dark {
+    color: #fdf1c2
+}
