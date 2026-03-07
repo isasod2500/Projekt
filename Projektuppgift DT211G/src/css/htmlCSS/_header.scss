@@ -1,0 +1,48 @@
+#header {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+#logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 1rem 0;
+}
+
+#navLogoEarth {
+    margin-left: 5%;
+    width: 10%;
+    height: auto;
+}
+
+#navLogoBeer {
+    position: relative;
+    animation: logoAnimation 5s ease-in-out infinite;
+    width: 5%;
+    opacity: 0;
+    height: auto;
+}
+
+#nav {
+    border-radius: 1rem;
+ul {
+    display: grid;
+    list-style: none;
+    grid-template-columns: 3fr 3fr 3fr;
+    padding: 0;
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+} a {
+    text-decoration: none;
+    
+} a:hover {
+    text-decoration: underline;
+}
+
+#footer {
+    width: 100%;
+}
+}
