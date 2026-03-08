@@ -1,9 +1,10 @@
-@use "indexSCSS/body";
-@use "indexSCSS/header";
-@use "indexSCSS/footer";
+@use "htmlCSS/body";
+@use "htmlCSS/header";
+@use "htmlCSS/footer";
 
 @use "themes/lightdark";
 
 @use "mixins/mixins";
 
 @use "animations/btnAnimations";
+@use "animations/logoAnimation"

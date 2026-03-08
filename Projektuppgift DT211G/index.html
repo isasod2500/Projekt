@@ -1,29 +1,65 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira">
-    <link rel="stylesheet" href="src/css/main.scss">
-    <title>Projektuppgift</title>
-  </head>
-  <body>
-    <header id="indexHeader">
-      <nav id="indexNav"><ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira">
+  <link rel="stylesheet" href="src/css/main.scss">
+  <title>Projektuppgift</title>
+</head>
+
+<body>
+  <header id="header">
+    <div id="logos">
+    
+    <img src="public/media/tellus.png" id="navLogoEarth" alt="planet jorden">
+    <img src="public/media/beer.png" id="navLogoBeer" alt="">
+    </div>
+    <nav id="nav">
+      
+      <ul>
         <li><a href="inspiration.html">Inspiration för webbplatsen</a></li>
         <li><a href="#">Hitta bärs</a></li>
         <li><a href="about.html">Tekniska specifikationer</a></li>
       </ul>
-      </nav>
-    </header>
-    <main id="mainIndex">
+    </nav>
+  </header>
+  <main id="mainIndex">
+
+    <h1>Är du en törstig astronaut, kosmonaut eller taikonaut?</h1>
+    <h2>Oroa dig inte! Vi har ordnat en tjänst som finner åt dig den närmsta cervezan, bieren, pivan, بيرة eller helt
+      enkelt: <br><b>öl</b>.</h2>
+    <section id="findBeer">
+      <button id="beerBtn">Klicka här för öl!</button>
+    </section>
+    <div id="locationInfo">
+      <ul id="locationInfoList">
+
+
+      </ul>
+    </div>
+    <div id="map">
       
-      <h1>Är du en törstig astronaut, kosmonaut eller taikonaut?</h1>
-      <h2>Oroa dig inte! Vi har ordnat en tjänst som finner åt dig den närmsta cervezan, bieren, pivan, بيرة  eller helt enkelt: <br><b>öl</b>.</h2>
-      <section id="findBeer">
-        <button id="beerBtn">Klicka här för öl!</button>
-      </section>
-    </main>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+    </div>
+
+    <p class="disclaimer"><i>Är datan fel eller ofullständig beklagar vi! Databasen uppdateras allteftersom. Sen färdas du rätt snabbt så några sekunder mer kan du nog vänta ;)</i></p>
+  </main>
+  <footer id="footer">
+      <nav id="nav">
+      <ul>
+        <li><a href="inspiration.html">Inspiration för webbplatsen</a></li>
+        <li><a href="#">Hitta bärs</a></li>
+        <li><a href="about.html">Tekniska specifikationer</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
