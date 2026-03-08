@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function fetchData(map) {
    try {
 
-      const callSpace = await fetch("https://api.open-notify.org/iss-now.json")
+      const callSpace = await fetch("https://api.open-notify.org/iss-now.json", { cache: 'no-store'  } )
       const gotSpace = await callSpace.json();
       var spaceCoords = [
          parseFloat(gotSpace.iss_position.latitude),
          parseFloat(gotSpace.iss_position.longitude)
       ]
 
-      const callBrewery = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${spaceCoords}&per_page=200`)
+      const callBrewery = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${spaceCoords}&per_page=200`,  { cache: 'no-store'  })
       const gotBrewery = await callBrewery.json()
       var brewCoords = [parseFloat(gotBrewery[0].latitude),
       parseFloat(gotBrewery[0].longitude)]
