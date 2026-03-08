@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function fetchData(map) {
    try {
 
-      const callSpace = await fetch("http://api.open-notify.org/iss-now.json")
+      const callSpace = await fetch("https://api.open-notify.org/iss-now.json")
       const gotSpace = await callSpace.json();
       var spaceCoords = [
          parseFloat(gotSpace.iss_position.latitude),
