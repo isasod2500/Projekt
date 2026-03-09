@@ -3,7 +3,7 @@
 /**
  * Eventlyssnare för DOMContent, som kallar på funktionen fetchData
  */
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
    var map = createMap(L.map("map"))
 
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 /**
  * Funktionen väntar på att kartan skapas i DOMContentLoaded och kör sedan async/await från APIerna.
  * @param {var} map 
- * @returns spaceCoords (ISS position), brewCoords (Närmsta bryggeri), map(kartan), brewName (Bryggeriets namn), brewCity (Bryggeriets stad)
+ * @returns spaceCoords (ISS position), brewCoords (Närmsta bryggeri), map(kartan), brewName (Bryggeriets namn), brewCity (Bryggeriets stad), HTML-element för listan av platser.
  */
 async function fetchData(map) {
    try {
@@ -23,8 +23,10 @@ async function fetchData(map) {
       let locationInfoEl = document.getElementById("locationInfoList")
       let locationInfoSpace = document.createElement("li")
       let locationInfoBrew = document.createElement("li")
+      locationInfoEl.innerHTML = "";
       locationInfoSpace.innerHTML = "Laddar..."
       locationInfoEl.appendChild(locationInfoSpace);
+      locationInfoSpace.style.animation = "loading-text 4s infinite"
 
       const callSpace = await fetch("https://api.wheretheiss.at/v1/satellites/25544")
       const gotSpace = await callSpace.json();
@@ -43,10 +45,8 @@ async function fetchData(map) {
 
       placeMarkers(spaceCoords, brewCoords, map)
       showMarkers(spaceCoords, brewCoords, map)
-      addToList(locationInfoSpace, spaceCoords,  locationInfoBrew, brewName, brewCity,  locationInfoEl)
+      addToList(locationInfoSpace, spaceCoords, locationInfoBrew, brewName, brewCity, locationInfoEl)
 
-
-      return { spaceCoords, brewCoords, map, brewName, brewCity, locationInfoEl, locationInfoSpace, locationInfoBrew };
 
    } catch (error) {
       console.log(error)
@@ -151,9 +151,8 @@ function createMap(map) {
  * @param {string} brewName 
  * @param {string} brewCity 
  */
-function addToList(locationInfoSpace, spaceCoords,  locationInfoBrew, brewName, brewCity,  locationInfoEl) {
-
-
+function addToList(locationInfoSpace, spaceCoords, locationInfoBrew, brewName, brewCity, locationInfoEl) {
+   locationInfoSpace.style.animation = "";
    locationInfoSpace.innerHTML = `Rymdstationens lat och lng: ${spaceCoords}`
    locationInfoBrew.innerHTML = `Närmsta bryggeri är: ${brewName}, ${brewCity}!`
    locationInfoEl.appendChild(locationInfoSpace);
