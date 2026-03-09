@@ -3,7 +3,7 @@
 /**
  * Eventlyssnare för DOMContent, som kallar på funktionen fetchData
  */
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
    var map = createMap(L.map("map"))
 
 
@@ -15,19 +15,27 @@ document.addEventListener("DOMContentLoaded", async () => {
 /**
  * Funktionen väntar på att kartan skapas i DOMContentLoaded och kör sedan async/await från APIerna.
  * @param {var} map 
- * @returns spaceCoords (ISS position), brewCoords (Närmsta bryggeri), map(kartan), brewName (Bryggeriets namn), brewCity (Bryggeriets stad)
+ * @returns spaceCoords (ISS position), brewCoords (Närmsta bryggeri), map(kartan), brewName (Bryggeriets namn), brewCity (Bryggeriets stad), HTML-element för listan av platser.
  */
 async function fetchData(map) {
    try {
+      //Variabler för funktionen addToList.
+      let locationInfoEl = document.getElementById("locationInfoList")
+      let locationInfoSpace = document.createElement("li")
+      let locationInfoBrew = document.createElement("li")
+      locationInfoEl.innerHTML = "";
+      locationInfoSpace.innerHTML = "Laddar..."
+      locationInfoEl.appendChild(locationInfoSpace);
+      locationInfoSpace.style.animation = "loading-text 4s infinite"
 
-      const callSpace = await fetch("https://api.open-notify.org/iss-now.json", { cache: 'no-store'  } )
+      const callSpace = await fetch("https://api.wheretheiss.at/v1/satellites/25544")
       const gotSpace = await callSpace.json();
       var spaceCoords = [
-         parseFloat(gotSpace.iss_position.latitude),
-         parseFloat(gotSpace.iss_position.longitude)
+         parseFloat(gotSpace.latitude),
+         parseFloat(gotSpace.longitude)
       ]
 
-      const callBrewery = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${spaceCoords}&per_page=200`,  { cache: 'no-store'  })
+      const callBrewery = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${spaceCoords}&per_page=200`, { cache: 'no-store' })
       const gotBrewery = await callBrewery.json()
       var brewCoords = [parseFloat(gotBrewery[0].latitude),
       parseFloat(gotBrewery[0].longitude)]
@@ -37,8 +45,8 @@ async function fetchData(map) {
 
       placeMarkers(spaceCoords, brewCoords, map)
       showMarkers(spaceCoords, brewCoords, map)
-      addToList(spaceCoords, brewName, brewCity)
-      return { spaceCoords, brewCoords, map, brewName, brewCity };
+      addToList(locationInfoSpace, spaceCoords, locationInfoBrew, brewName, brewCity, locationInfoEl)
+
 
    } catch (error) {
       console.log(error)
@@ -61,7 +69,8 @@ function placeMarkers(spaceCoords, brewCoords, map) {
 
    //Custom-markers
    var spaceIcon = L.icon({
-      iconUrl: "../public/media/ISS.svg",
+      iconUrl: "media/ISS.svg",
+
 
       iconSize: [50, 50],
       iconAnchor: [25, 25],
@@ -69,7 +78,7 @@ function placeMarkers(spaceCoords, brewCoords, map) {
    });
 
    var brewIcon = L.icon({
-      iconUrl: "../public/media/beer.png",
+      iconUrl: "media/beer.png",
 
       iconSize: [50, 50],
       iconAnchor: [25, 25],
@@ -122,7 +131,7 @@ function createMap(map) {
       .openOn(map);
 
    var thirstyIcon = L.icon({
-      iconUrl: "../public/media/batteryLo.svg",
+      iconUrl: "media/batteryLo.svg",
 
       iconSize: [35, 35],
       iconAnchor: [19, 3],
@@ -134,20 +143,16 @@ function createMap(map) {
    return map;
 }
 
-//Variabler för funktionen nedan.
-let locationInfoEl = document.getElementById("locationInfoList")
-let locationInfoSpace = document.createElement("li")
-let locationInfoBrew = document.createElement("li")
+
+
 /**
  * Lägger till koordinaterna i en lista, ovanför kartan.
  * @param {string} spaceCoords 
  * @param {string} brewName 
  * @param {string} brewCity 
  */
-function addToList(spaceCoords, brewName, brewCity) {
-
-   locationInfoSpace.innerHTML = ""
-   locationInfoBrew.innerHTML = ""
+function addToList(locationInfoSpace, spaceCoords, locationInfoBrew, brewName, brewCity, locationInfoEl) {
+   locationInfoSpace.style.animation = "";
    locationInfoSpace.innerHTML = `Rymdstationens lat och lng: ${spaceCoords}`
    locationInfoBrew.innerHTML = `Närmsta bryggeri är: ${brewName}, ${brewCity}!`
    locationInfoEl.appendChild(locationInfoSpace);
