@@ -16,7 +16,7 @@
       <img src="public/media/tellus.png" id="navLogoEarth" alt="planet jorden">
       <img src="public/media/beer.png" id="navLogoBeer" alt="">
     </div>
-    <nav id="nav">
+    <nav class="nav">
       <ul>
         <li><a href="inspiration.html">Inspiration för webbplatsen</a></li>
         <li><a href="index.html">Hitta bärs</a></li>
@@ -35,11 +35,11 @@
           visa
           data på kartan.</p>
          <p><a href="https://wheretheiss.at/w/developer" target="_blank">WhereTheISSAt<img
-            src="public/media/openNew.svg"></a> används för att hämta den Internationella Rymdstationens nuvarande plats
+            src="public/media/openNew.svg" alt=""></a> används för att hämta den Internationella Rymdstationens nuvarande plats
         som latitud och longitud.</p>
 
         <p>
-          <a href="https://www.openbrewerydb.org/" target="_blank">OpenBreweryDB<img src="public/media/openNew.svg"></a> hämtar
+          <a href="https://www.openbrewerydb.org/" target="_blank">OpenBreweryDB<img src="public/media/openNew.svg" alt=""></a> hämtar
           information om bryggerier så som namn, stad, latitud och longitud mm. Vanligtvis hade en formel,
           haversineformeln, krävts för att räkna ut avståndet men tack vare parametern "by_dist" räknar APIn själv ut
           avståndet mellan koordinater.
@@ -47,14 +47,14 @@
 
         <h2>Karta</h2>
         <p>
-          Som karta används <a href="https://leafletjs.com/" target="_blank">Leaflet<img src="public/media/openNew.svg"></a>. Det är en
+          Som karta används <a href="https://leafletjs.com/" target="_blank">Leaflet<img src="public/media/openNew.svg" alt=""></a>. Det är en
           open-source javascript kartfunktion som kan användas i samband med andra Geokod tjänster för att mäta avstånd
           och söka platser.
         </p>
 
         <p>
           Grafiken för kartan hämtas från <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap<img
-              src="public/media/openNew.svg"></a> och implementeras via JavaScript. Det är en av många grafiker som man
+              src="public/media/openNew.svg" alt=""></a> och implementeras via JavaScript. Det är en av många grafiker som man
           kan använda med Leaflet. Den är också gratis att använda, så länge man ger erkännande via deras länk.
         </p>
       </article>
@@ -62,7 +62,7 @@
 
   </main>
   <footer id="footer">
-      <nav id="nav">
+      <nav class="nav">
       <ul>
         <li><a href="#">Inspiration för webbplatsen</a></li>
         <li><a href="index.html">Hitta bärs</a></li>
