@@ -22,7 +22,7 @@ body {
             background-color: #FFEDA3
         }
 
-        #nav {
+        .nav {
             @include nav-light;
         }
 
@@ -64,7 +64,7 @@ body {
             background-color: #473900;
         }
 
-        #nav {
+        .nav {
             @include nav-dark;
         }
 
@@ -232,7 +232,7 @@ body {
 
         }
 
-        #nav {
+        .nav {
             @include nav-light;
         }
 
@@ -255,7 +255,7 @@ body {
             background-color: #473900;
         }
 
-        #nav {
+        .nav {
             @include nav-dark;
         }
 
@@ -405,7 +405,7 @@ body {
             background-color: #FFEDA3
         }
 
-        #nav {
+        .nav {
             @include nav-light;
         }
 
@@ -447,7 +447,7 @@ body {
             background-color: #473900;
         }
 
-        #nav {
+        .nav {
             @include nav-dark;
         }
 
