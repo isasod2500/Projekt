@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 async function fetchData(map) {
    try {
+
+      document.getElementById("beerBtn").disabled = true;
       //Variabler för funktionen addToList.
       let locationInfoEl = document.getElementById("locationInfoList")
       let locationInfoSpace = document.createElement("li")
@@ -47,6 +49,7 @@ async function fetchData(map) {
       showMarkers(spaceCoords, brewCoords, map)
       addToList(locationInfoSpace, spaceCoords, locationInfoBrew, brewName, brewCity, locationInfoEl)
 
+      document.getElementById("beerBtn").disabled = false;
 
    } catch (error) {
       console.log(error)
