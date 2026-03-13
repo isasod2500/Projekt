@@ -14,6 +14,8 @@ export default defineConfig({
                 inspiration: resolve(__dirname, "inspiration.html"),
                 about: resolve(__dirname, "about.html"),
                 JSDoc: resolve(__dirname, "out/JSDoc.html"),
+                JSDocIndex: resolve(__dirname, "out/index.html"),
+                JSDocGlobal: resolve(__dirname, "out/global.html"),
             }
         }
     },
